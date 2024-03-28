@@ -2,14 +2,14 @@
 **/dist
 **/layer
 **/open-source
-**/.zip
+**/*.zip
 **/.DS_Store
 **/.idea
 **/.log
 **/coverage
 **/.nyc_output
 **/global-s3-assets
-**/regional-s3-assets
+#**/regional-s3-assets
 **/npm-debug.log
 **/test-report.xml
 .scannerwork
