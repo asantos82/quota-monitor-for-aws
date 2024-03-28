@@ -15,6 +15,7 @@ import { Construct, IConstruct } from "constructs";
 import { enforceSSL } from "./enforce-SSL.utils";
 import {
   IRuleToTarget,
+  LAMBDA_CPU_ARCH,
   LAMBDA_RUNTIME_NODE,
   LambdaProps,
   LOG_LEVEL,
@@ -81,6 +82,7 @@ export class EventsToLambda<T extends QuotaMonitorEvent>
       runtime: LAMBDA_RUNTIME_NODE,
       code: lambda.Code.fromAsset(<string>props.assetLocation),
       handler: "index.handler",
+      architecture: LAMBDA_CPU_ARCH,
       environment: {
         ...props.environment,
         LOG_LEVEL: this.node.tryGetContext("LOG_LEVEL") || LOG_LEVEL.INFO, //change as needed

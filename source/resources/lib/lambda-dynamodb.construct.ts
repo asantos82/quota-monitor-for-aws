@@ -15,6 +15,7 @@ import {
   LambdaToTarget,
   LAMBDA_RUNTIME_NODE,
   LOG_LEVEL,
+  LAMBDA_CPU_ARCH,
 } from "./exports";
 import { KMS } from "./kms.construct";
 
@@ -48,6 +49,7 @@ export class LambdaToDDB
           runtime: LAMBDA_RUNTIME_NODE,
           code: lambda.Code.fromAsset(<string>props.assetLocation),
           handler: "index.handler",
+          architecture: LAMBDA_CPU_ARCH,
           environment: {
             ...props.environment,
             LOG_LEVEL: this.node.tryGetContext("LOG_LEVEL") || LOG_LEVEL.INFO, //change as needed

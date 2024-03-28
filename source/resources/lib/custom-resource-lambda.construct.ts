@@ -10,7 +10,7 @@ import {
 } from "aws-cdk-lib";
 import { NagSuppressions } from "cdk-nag";
 import { Construct, IConstruct } from "constructs";
-import { LambdaProps, LAMBDA_RUNTIME_NODE, LOG_LEVEL } from "./exports";
+import { LambdaProps, LAMBDA_RUNTIME_NODE, LOG_LEVEL, LAMBDA_CPU_ARCH } from "./exports";
 import { KMS } from "./kms.construct";
 
 /**
@@ -54,6 +54,7 @@ export class CustomResourceLambda extends Construct implements ICRLambda {
       timeout: props.timeout ? props.timeout : Duration.seconds(5),
       handler: "index.handler",
       runtime: LAMBDA_RUNTIME_NODE,
+      architecture: LAMBDA_CPU_ARCH,
       environment: {
         ...props.environment,
         LOG_LEVEL: this.node.tryGetContext("LOG_LEVEL") || LOG_LEVEL.INFO, //change as needed

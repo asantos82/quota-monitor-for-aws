@@ -16,6 +16,11 @@ import { ILayerVersion } from "aws-cdk-lib/aws-lambda";
 export const LAMBDA_RUNTIME_NODE = lambda.Runtime.NODEJS_18_X;
 
 /**
+ * @description supported lambda CPU Architecture
+ */
+export const LAMBDA_CPU_ARCH = lambda.Architecture.ARM_64;
+
+/**
  * @description partition key and sort key for service table
  */
 export const SERVICE_TABLE = {
